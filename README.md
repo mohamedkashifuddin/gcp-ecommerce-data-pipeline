@@ -42,7 +42,7 @@ The data pipeline follows a medallion architecture pattern (Bronze, Silver, Gold
 
 Below is a visual representation of the data flow through the pipeline's different stages and key GCP services.
 
-```mermaid
+```text
 graph TD
     CF[Cloud Functions<br>(Simulated Data Production)] --> GCS_Raw[GCS<br>Raw Landing Zone]
     GCS_Raw --> Dataproc_Bronze[Dataproc<br>(Bronze Ingestion)]
