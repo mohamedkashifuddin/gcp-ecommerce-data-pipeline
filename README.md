@@ -44,15 +44,15 @@ Below is a visual representation of the data flow through the pipeline's differe
 
 ```mermaid
 graph TD
-    CF[Cloud Functions ⚙️<br>(Simulated Data Production)] --> GCS_Raw[GCS ☁️<br>Raw Landing Zone]
-    GCS_Raw --> Dataproc_Bronze[Dataproc 💿<br>(Bronze Ingestion)]
-    Dataproc_Bronze --> GCS_Bronze[GCS ☁️<br>Bronze Layer]
-    GCS_Bronze --> Dataproc_Silver[Dataproc 💿<br>(Silver Processing)]
-    Dataproc_Silver --> GCS_Silver[GCS ☁️<br>Silver Layer]
+    CF[Cloud Functions<br>(Simulated Data Production)] --> GCS_Raw[GCS<br>Raw Landing Zone]
+    GCS_Raw --> Dataproc_Bronze[Dataproc<br>(Bronze Ingestion)]
+    Dataproc_Bronze --> GCS_Bronze[GCS<br>Bronze Layer]
+    GCS_Bronze --> Dataproc_Silver[Dataproc<br>(Silver Processing)]
+    Dataproc_Silver --> GCS_Silver[GCS<br>Silver Layer]
     GCS_Silver --> DBT[dbt<br>(Gold Transformation)]
-    DBT --> BigQuery_Gold[BigQuery 📈<br>Gold Layer]
-    BigQuery_Gold --> Metabase[Metabase 📊<br>(Dashboards)]
-    Airflow[Apache Airflow 🎶<br>(Orchestration)] --- CF
+    DBT --> BigQuery_Gold[BigQuery<br>Gold Layer]
+    BigQuery_Gold --> Metabase[Metabase<br>(Dashboards)]
+    Airflow[Apache Airflow<br>(Orchestration)] --- CF
     Airflow --- Dataproc_Bronze
     Airflow --- Dataproc_Silver
     Airflow --- DBT
@@ -63,7 +63,7 @@ graph TD
 
 The repository is organized to clearly separate concerns and stages of the data pipeline.
 
-```mermaid
+```text
 ├── LICENSE                          # 📄 Project license information
 ├── README.md                        # 📖 This README file
 ├── .git/                            # 🌳 Git version control directory
