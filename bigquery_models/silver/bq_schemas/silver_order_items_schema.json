@@ -1,0 +1,10 @@
+[
+  {"name": "order_item_id", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "order_id", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "product_id", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "quantity", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "price", "type": "FLOAT", "mode": "NULLABLE"},
+  {"name": "item_total", "type": "FLOAT", "mode": "NULLABLE"},
+  {"name": "ingestion_timestamp", "type": "TIMESTAMP", "mode": "NULLABLE"},
+  {"name": "source_table", "type": "STRING", "mode": "NULLABLE"}
+]

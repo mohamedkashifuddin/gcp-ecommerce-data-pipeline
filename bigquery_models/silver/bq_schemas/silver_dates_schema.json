@@ -1,0 +1,8 @@
+[
+  {"name": "date", "type": "DATE", "mode": "NULLABLE"},
+  {"name": "day_of_week", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "month", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "year", "type": "INT64", "mode": "NULLABLE"},
+  {"name": "ingestion_timestamp", "type": "TIMESTAMP", "mode": "NULLABLE"},
+  {"name": "source_table", "type": "STRING", "mode": "NULLABLE"}
+]

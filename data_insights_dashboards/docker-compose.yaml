@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase_app
+    ports:
+      - "8080:3000"
+    volumes:
+      - ./metabase_data:/metabase.db
+      - ./ecommerce-batch-pipeline-dbt.json:/app/bigquery_key.json:ro
+    environment:
+      JAVA_TIMEZONE: Asia/Kolkata
+      GCP_PROJECT_ID: "ecommerce-batch-pipeline-dbt"
+      GCP_DATASET_ID: "batch_pipeline_gold"
+    restart: unless-stopped

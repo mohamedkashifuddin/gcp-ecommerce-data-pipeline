@@ -1,0 +1,8 @@
+[
+  {"name": "product_id", "type": "INT64", "mode": "NULLABLE"},
+  {"name": "product_name", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "category", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "price", "type": "FLOAT64", "mode": "NULLABLE"},
+  {"name": "ingestion_timestamp", "type": "TIMESTAMP", "mode": "NULLABLE"},
+  {"name": "source_table", "type": "STRING", "mode": "NULLABLE"}
+]

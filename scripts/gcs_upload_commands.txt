@@ -1,0 +1,14 @@
+gsutil mb -p YOUR_GCP_PROJECT_ID -l YOUR_PREFERRED_REGION gs://ecommerce-batch-pipeline-dataproc-jobs
+
+
+# Upload the dags folder
+gsutil cp -r dags gs://ecommerce-batch-pipeline-dataproc-jobs/
+
+# Upload the dataproc_jobs folder
+gsutil cp -r dataproc_jobs gs://ecommerce-batch-pipeline-dataproc-jobs/
+
+# Upload the config folder (assuming it's at the same level as dags and dataproc_jobs)
+gsutil cp -r config gs://ecommerce-batch-pipeline-dataproc-jobs/
+
+# Upload the BigQuery connector JAR
+gsutil cp ./jar/spark-bigquery-with-dependencies_2.12-0.35.0.jar gs://ecommerce-batch-pipeline-dataproc-jobs/jars/

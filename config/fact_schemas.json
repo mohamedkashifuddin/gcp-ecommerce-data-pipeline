@@ -1,0 +1,35 @@
+{
+  "facts": [
+    {
+      "table_name": "orders",
+      "input_gcs_path": "gs://ecommerce_batch_pipeline_raw-data/fact/orders_*.csv",
+      "schema": [
+        {"column_name": "order_id", "data_type": "integer"},
+        {"column_name": "order_date", "data_type": "string"},
+        {"column_name": "customer_id", "data_type": "integer"},
+        {"column_name": "total_amount", "data_type": "float"}
+      ]
+    },
+    {
+      "table_name": "order_items",
+      "input_gcs_path": "gs://ecommerce_batch_pipeline_raw-data/fact/order_items_*.csv",
+      "schema": [
+        {"column_name": "order_item_id", "data_type": "integer"},
+        {"column_name": "order_id", "data_type": "integer"},
+        {"column_name": "product_id", "data_type": "integer"},
+        {"column_name": "quantity", "data_type": "integer"},
+        {"column_name": "price", "data_type": "float"}
+      ]
+    },
+    {
+      "table_name": "payments",
+      "input_gcs_path": "gs://ecommerce_batch_pipeline_raw-data/fact/payments_*.csv",
+      "schema": [
+        {"column_name": "payment_id", "data_type": "integer"},
+        {"column_name": "order_id", "data_type": "integer"},
+        {"column_name": "payment_date", "data_type": "string"},
+        {"column_name": "payment_amount", "data_type": "float"}
+      ]
+    }
+  ]
+}

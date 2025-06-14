@@ -1,0 +1,8 @@
+[
+  {"name": "order_id", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "order_date", "type": "DATE", "mode": "NULLABLE"},
+  {"name": "customer_id", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "total_amount", "type": "FLOAT", "mode": "NULLABLE"},
+  {"name": "ingestion_timestamp", "type": "TIMESTAMP", "mode": "NULLABLE"},
+  {"name": "source_table", "type": "STRING", "mode": "NULLABLE"}
+]

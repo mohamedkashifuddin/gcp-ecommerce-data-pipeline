@@ -1,0 +1,22 @@
+{
+  "orders": [
+    {"column_name": "order_id", "data_type": "integer"},
+    {"column_name": "order_date", "data_type": "date"},
+    {"column_name": "customer_id", "data_type": "integer"},
+    {"column_name": "total_amount", "data_type": "float"}
+  ],
+  "order_items": [
+    {"column_name": "order_item_id", "data_type": "integer"},
+    {"column_name": "order_id", "data_type": "integer"},
+    {"column_name": "product_id", "data_type": "integer"},
+    {"column_name": "quantity", "data_type": "integer"},
+    {"column_name": "price", "data_type": "float"},
+    {"column_name": "item_total", "data_type": "float"}
+  ],
+  "payments": [
+    {"column_name": "payment_id", "data_type": "integer"},
+    {"column_name": "order_id", "data_type": "integer"},
+    {"column_name": "payment_date", "data_type": "date"},
+    {"column_name": "payment_amount", "data_type": "float"}
+  ]
+}

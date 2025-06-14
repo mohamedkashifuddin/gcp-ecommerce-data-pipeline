@@ -1,0 +1,95 @@
+CLUSTER_NAME="test-cluster-n1-us-central1"
+REGION="us-central1"
+PROJECT_ID="ecommerce-batch-pipeline-dbt"
+
+GCS_JOBS_BASE="gs://ecommerce-batch-pipeline-dataproc-jobs/dataproc_jobs"
+
+UTILS_PY_FILE="${GCS_JOBS_BASE}/utils/utils.py"
+
+BRONZE_DIM_APP_GCS_PATH="${GCS_JOBS_BASE}/bronze/bronze_dim_ingestion.py"
+BRONZE_FACT_APP_GCS_PATH="${GCS_JOBS_BASE}/bronze/bronze_fact_ingestion.py"
+
+DIM_SCHEMAS_CONFIG="${GCS_JOBS_BASE}/../config/dim_schemas.json"
+FACT_SCHEMAS_CONFIG="${GCS_JOBS_BASE}/../config/fact_schemas.json"
+
+echo "Submitting PySpark job for Bronze Dimension Ingestion (with Sellers config added)..."
+gcloud dataproc jobs submit pyspark \
+    "${BRONZE_DIM_APP_GCS_PATH}" \
+    --cluster="${CLUSTER_NAME}" \
+    --region="${REGION}" \
+    --project="${PROJECT_ID}" \
+    --py-files="${UTILS_PY_FILE}" \
+    --files="${DIM_SCHEMAS_CONFIG}" \
+    --properties="spark.jars.packages=com.google.cloud.spark:spark-bigquery-with-dependencies_2.12:0.35.0" \
+    --properties="spark.hadoop.google.cloud.project.id=${PROJECT_ID}" \
+    -- \
+    --project_id="${PROJECT_ID}"
+
+echo "Bronze Dimension Ingestion Job submitted. Check Dataproc Jobs UI for status."
+
+echo "Submitting PySpark job for Bronze Fact Ingestion..."
+gcloud dataproc jobs submit pyspark \
+    "${BRONZE_FACT_APP_GCS_PATH}" \
+    --cluster="${CLUSTER_NAME}" \
+    --region="${REGION}" \
+    --project="${PROJECT_ID}" \
+    --py-files="${UTILS_PY_FILE}" \
+    --files="${FACT_SCHEMAS_CONFIG}" \
+    --properties="spark.jars.packages=com.google.cloud.spark:spark-bigquery-with-dependencies_2.12:0.35.0" \
+    --properties="spark.hadoop.google.cloud.project.id=${PROJECT_ID}" \
+    -- \
+    --project_id="${PROJECT_ID}"
+
+echo "Bronze Fact Ingestion Job submitted. Check Dataproc Jobs UI for status."
+
+CLUSTER_NAME="test-cluster-chennai"
+REGION="asia-south1"
+PROJECT_ID="ecommerce-batch-pipeline-dbt"
+
+GCS_JOBS_BASE="gs://ecommerce-batch-pipeline-dataproc-jobs/dataproc_jobs"
+UTILS_PY_FILE="${GCS_JOBS_BASE}/utils/utils.py"
+SILVER_DIM_APP_GCS_PATH="${GCS_JOBS_BASE}/silver/silver_dim_ingestion.py"
+SILVER_DIM_SCHEMAS_CONFIG="${GCS_JOBS_BASE}/../config/silver_dim_schemas.json"
+
+TEMP_GCS_BUCKET="dataproc-temp-asia-south1-444088578532-n3nn2v7v"
+
+echo "Submitting PySpark job for Silver Dimension Ingestion to new cluster..."
+gcloud dataproc jobs submit pyspark \
+    "${SILVER_DIM_APP_GCS_PATH}" \
+    --cluster="${CLUSTER_NAME}" \
+    --region="${REGION}" \
+    --project="${PROJECT_ID}" \
+    --py-files="${UTILS_PY_FILE}" \
+    --files="${SILVER_DIM_SCHEMAS_CONFIG}" \
+    --properties="spark.jars.packages=com.google.cloud.spark:spark-bigquery-with-dependencies_2.12:0.34.0" \
+    --properties="spark.hadoop.google.cloud.project.id=${PROJECT_ID}" \
+    --properties="spark.conf.temporaryGcsBucket=${TEMP_GCS_BUCKET}" \
+    -- \
+    --project_id="${PROJECT_ID}"
+
+CLUSTER_NAME="test-cluster-n1-us-central1"
+REGION="us-central1"
+PROJECT_ID="ecommerce-batch-pipeline-dbt"
+
+GCS_JOBS_BASE="gs://ecommerce-batch-pipeline-dataproc-jobs/dataproc_jobs"
+
+UTILS_PY_FILE="${GCS_JOBS_BASE}/utils/utils.py"
+
+SILVER_FACT_APP_GCS_PATH="${GCS_JOBS_BASE}/silver/silver_fact_ingestion.py"
+
+SILVER_FACT_SCHEMAS_CONFIG="gs://ecommerce-batch-pipeline-dataproc-jobs/config/silver_fact_schemas.json"
+
+echo "Submitting PySpark job for Silver Fact Ingestion..."
+gcloud dataproc jobs submit pyspark \
+    "${SILVER_FACT_APP_GCS_PATH}" \
+    --cluster="${CLUSTER_NAME}" \
+    --region="${REGION}" \
+    --project="${PROJECT_ID}" \
+    --py-files="${UTILS_PY_FILE}" \
+    --files="${SILVER_FACT_SCHEMAS_CONFIG}" \
+    --properties="spark.jars.packages=com.google.cloud.spark:spark-bigquery-with-dependencies_2.12:0.35.0" \
+    --properties="spark.hadoop.google.cloud.project.id=${PROJECT_ID}" \
+    -- \
+    --project_id="${PROJECT_ID}"
+
+echo "Silver Fact Ingestion Job submitted. Check Dataproc Jobs UI for status."

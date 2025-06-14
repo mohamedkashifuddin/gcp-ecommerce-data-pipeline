@@ -1,0 +1,35 @@
+{
+  "dimensions": [
+    {
+      "table_name": "customers",
+      "input_gcs_path": "gs://ecommerce_batch_pipeline_raw-data/dim/customers_*.csv",
+      "schema": [
+        {"column_name": "customer_id", "data_type": "integer"},
+        {"column_name": "customer_name", "data_type": "string"},
+        {"column_name": "email", "data_type": "string"},
+        {"column_name": "join_date", "data_type": "string"}
+      ]
+    },
+    {
+      "table_name": "products",
+      "input_gcs_path": "gs://ecommerce_batch_pipeline_raw-data/dim/products_*.csv",
+      "schema": [
+        {"column_name": "product_id", "data_type": "integer"},
+        {"column_name": "product_name", "data_type": "string"},
+        {"column_name": "category", "data_type": "string"},
+        {"column_name": "price", "data_type": "float"}
+      ]
+    },
+    {
+      "table_name": "dates",
+      "input_gcs_path": "gs://ecommerce_batch_pipeline_raw-data/dim/dates_*.csv",
+      "schema": [
+        {"column_name": "date_id", "data_type": "integer"},
+        {"column_name": "date", "data_type": "string"},
+        {"column_name": "day_of_week", "data_type": "string"},
+        {"column_name": "month", "data_type": "string"},
+        {"column_name": "year", "data_type": "integer"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {"name": "payment_id", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "order_id", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "payment_date", "type": "DATE", "mode": "NULLABLE"},
+  {"name": "payment_amount", "type": "FLOAT", "mode": "NULLABLE"},
+  {"name": "ingestion_timestamp", "type": "TIMESTAMP", "mode": "NULLABLE"},
+  {"name": "source_table", "type": "STRING", "mode": "NULLABLE"}
+]

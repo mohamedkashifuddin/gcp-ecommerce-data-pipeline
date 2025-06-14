@@ -1,0 +1,85 @@
+version: 2
+
+sources:
+  - name: batch_pipeline_silver
+    database: "ecommerce-batch-pipeline-dbt"
+    schema: batch_pipeline_silver
+
+    tables:
+      - name: customers
+        description: "Silver layer customer dimension table"
+        columns:
+          - name: customer_id
+            description: "Unique identifier for the customer"
+            tests:
+              - unique
+              - not_null
+          - name: first_name
+          - name: last_name
+          - name: full_name
+          - name: email
+          - name: join_date
+
+      - name: products
+        description: "Silver layer product dimension table"
+        columns:
+          - name: product_id
+            description: "Unique identifier for the product"
+            tests:
+              - unique
+              - not_null
+          - name: product_name
+          - name: category
+          - name: price
+
+      - name: dates
+        description: "Silver layer date dimension table"
+        columns:
+          - name: date
+            description: "Full date in YYYY-MM-DD format"
+            tests:
+              - unique
+              - not_null
+          - name: day_of_week
+          - name: month
+          - name: year
+
+      - name: orders
+        description: "Silver layer orders fact table"
+        columns:
+          - name: order_id
+            description: "Unique identifier for the order"
+            tests:
+              - unique
+              - not_null
+          - name: order_date
+          - name: customer_id
+          - name: total_amount
+          - name: ingestion_timestamp
+          - name: source_table
+
+      - name: order_items
+        description: "Silver layer order items fact table"
+        columns:
+          - name: order_item_id
+            description: "Unique identifier for the order item"
+            tests:
+              - unique
+              - not_null
+          - name: order_id
+          - name: product_id
+          - name: quantity
+          - name: price
+          - name: item_total
+
+      - name: payments
+        description: "Silver layer payments fact table"
+        columns:
+          - name: payment_id
+            description: "Unique identifier for the payment"
+            tests:
+              - unique
+              - not_null
+          - name: order_id
+          - name: payment_date
+          - name: payment_amount

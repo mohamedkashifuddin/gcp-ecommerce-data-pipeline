@@ -1,0 +1,10 @@
+[
+  {"name": "customer_id", "type": "INT64", "mode": "NULLABLE"},
+  {"name": "first_name", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "last_name", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "full_name", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "email", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "join_date", "type": "DATE", "mode": "NULLABLE"},
+  {"name": "ingestion_timestamp", "type": "TIMESTAMP", "mode": "NULLABLE"},
+  {"name": "source_table", "type": "STRING", "mode": "NULLABLE"}
+]

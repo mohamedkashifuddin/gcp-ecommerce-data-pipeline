@@ -1,0 +1,22 @@
+{
+  "customers": [
+    {"column_name": "customer_id", "data_type": "integer"},
+    {"column_name": "first_name", "data_type": "string"},
+    {"column_name": "last_name", "data_type": "string"},
+    {"column_name": "full_name", "data_type": "string"},
+    {"column_name": "email", "data_type": "string"},
+    {"column_name": "join_date", "data_type": "date"}
+  ],
+  "products": [
+    {"column_name": "product_id", "data_type": "integer"},
+    {"column_name": "product_name", "data_type": "string"},
+    {"column_name": "category", "data_type": "string"},
+    {"column_name": "price", "data_type": "float"}
+  ],
+  "dates": [
+    {"column_name": "date", "data_type": "date"},
+    {"column_name": "day_of_week", "data_type": "string"},
+    {"column_name": "month", "data_type": "string"},
+    {"column_name": "year", "data_type": "integer"}
+  ]
+}
